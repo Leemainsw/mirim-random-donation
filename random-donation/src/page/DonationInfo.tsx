@@ -1,7 +1,7 @@
 import React from 'react';
 
-const DonationInfo = () => {
-
+const DonationInfo = (): JSX.Element => {
+    return(<></>)
 }
 
 
