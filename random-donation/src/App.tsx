@@ -1,24 +1,21 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import DonationInfo from "./page/DonationInfo";
+import Rank from "./page/Rank";
+import Result from "./page/Result";
+
+function App(): JSX.Element {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<DonationInfo />} />
+                <Route path="/rank" element={<Rank />} />
+                <Route path="/result" element={<Result />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
