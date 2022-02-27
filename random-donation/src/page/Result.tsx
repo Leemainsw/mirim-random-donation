@@ -1,7 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const Result = (): JSX.Element => {
-    return(<></>)
-}
+    return (
+        <>
+        </>
+    );
+};
 
 export default Result;
