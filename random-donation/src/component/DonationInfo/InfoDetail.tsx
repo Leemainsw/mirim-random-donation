@@ -1,23 +1,14 @@
 import React, { useEffect, useState } from "react";
-import UserData from "../../types/type";
-import UserDataService from "../../services/service";
+import { connect } from "react-redux";
+import { firebase_user_list } from "../../reducer/reducer";
 
-const InfoDetail = () => {
-  const [users, setUsers] = useState(Array<UserData>());
+const InfoDetail = (props: any) => {
+  const [users, setUsers] = useState();
   useEffect(() => {
-    UserDataService.getAll().onSnapshot((items: any) => {
-      let user = new Array<UserData>();
-      items.forEach((item: any) => {
-        let data = item.data();
-        user.push({
-          ...data,
-        });
-      });
+    setUsers(props.dispatch(firebase_user_list()));
 
-      console.log(user);
-      setUsers(user);
-    });
-  });
+    console.log(users);
+  }, []);
   return (
     <>
       <h1>hello</h1>
@@ -25,4 +16,11 @@ const InfoDetail = () => {
   );
 };
 
-export default InfoDetail;
+let mapStateToProps = (state: any) => {
+  return {
+    users: state.users,
+    selectedUser: state.selectedUser,
+  };
+};
+
+export default connect(mapStateToProps)(InfoDetail);
