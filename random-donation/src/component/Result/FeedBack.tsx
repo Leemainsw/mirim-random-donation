@@ -2,104 +2,69 @@ import React from "react";
 import styled from "styled-components";
 import { device } from "../../services/devices";
 
-interface FontProp {
-  fontSize: string;
-  fontWeight: string;
-  fontColor: string;
-  marginTop?: string | null;
-  padding?: string;
-  paddingLeft?: string;
-}
-
-const BottomBox = styled.div`
-  position: relative;
-  width: 65%;
-  height: 45vh;
-  background: #f6f6f6;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-
-  margin-top: 1.2rem;
-  font-family: Noto Sans KR;
-
-  @media ${device.tablet} {
-    height: 25vh;
-    margin-top: 0;
-    margin-bottom: 50px;
-  }
-`;
-
-const Text = styled.p`
-  font-size: ${(props: FontProp) => props.fontSize};
-  font-weight: ${(props: FontProp) => props.fontWeight};
-  color: ${(props: FontProp) => props.fontColor};
-
-  @media ${device.mobileL || device.tablet} {
-    font-size: calc(${(props: FontProp) => props.fontSize} / 2 + 5px);
-  }
-
-  padding: 5px;
-`;
-
-const TextBox = styled.div`
-  margin-top: 20px;
-  margin-left: 30px;
-`;
-
-const Form = styled.textarea`
-  width: 80%;
-  height: 100px;
-
-  margin-top: 20px;
-  margin-left: 32px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-
-  font-size: 1.2rem;
-  font-family: Noto Sans KR;
-
-  @media ${device.desktop} {
-    height: 75%;
-  }
-
-  @media ${device.tablet} {
-    width: 75%;
-    height: 30%;
-  }
-`;
-
-const Button = styled.button`
-  position: absolute;
-  right: 2rem;
-  bottom: 2rem;
-
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 1rem;
-
-  display: flex;
-  align-items: center;
-  text-align: center;
-
-  color: #ffffff;
-  background: #121212;
-  border: 1px solid #fafafa;
-  box-sizing: border-box;
-  border-radius: 3px;
-
-  padding: 0.5rem;
-`;
-
 const FeedBackWrapper = styled.div`
   width: 100%;
   height: 48%;
-  background: #5485;
+  background: #f6f6f6;
+`;
+const Wrapper = styled.div`
+  padding: 40px 50px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+`;
+const Title = styled.h1`
+  font-weight: 800;
+  font-size: 1.6em;
+  width: 100%;
+`;
+const Detail = styled.p`
+  font-size: 1em;
+  margin: 5px 0px;
+  color: #5f5f5f;
+`;
+const TextInput = styled.textarea`
+  margin: 5px 0px;
+  font-family: Noto Sans KR;
+  width: 100%;
+  height: 75%;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  font-size: 1.3em;
+  resize: none;
+`;
+const ButtonWrapper = styled.div`
+  width: 100%;
+  text-align: right;
+`;
+const Button = styled.button`
+  width: 75px;
+  height: 35px;
+  font-family: Noto Sans KR;
+  background: #121212;
+  border-radious: 5px;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
 `;
 
 const FeedBack = (): JSX.Element => {
-  return <FeedBackWrapper>sadkfj</FeedBackWrapper>;
+  return (
+    <FeedBackWrapper>
+      <Wrapper>
+        <Title>2022달력 피드백</Title>
+        <Detail>
+          앞으로 달력하면서 하고 싶은 것을 써주삼요 헛소리 써줘도 감사히 읽음▽
+        </Detail>
+        <TextInput />
+        <ButtonWrapper>
+          <Button>Send!</Button>
+        </ButtonWrapper>
+      </Wrapper>
+    </FeedBackWrapper>
+  );
 };
 
 export default FeedBack;
