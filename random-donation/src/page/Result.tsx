@@ -98,6 +98,8 @@ const Banner = styled.img`
 `;
 
 const Result = (): JSX.Element => {
+  const GoYoutube = () => {};
+
   return (
     <Container>
       <ResultWrapper>
@@ -106,7 +108,9 @@ const Result = (): JSX.Element => {
           <RightContent>
             <RankList />
             <BannerContent>
-              <Banner src={thankYou} />
+              <a href="https://www.youtube.com/watch?v=VdVq1r7OdGM">
+                <Banner src={thankYou} />
+              </a>
             </BannerContent>
           </RightContent>
         </Top>
