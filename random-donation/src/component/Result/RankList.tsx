@@ -85,7 +85,7 @@ const RankList = (props: any): JSX.Element => {
         });
     };
 
-    getData();
+    // getData();
   }, []);
 
   const array = [
