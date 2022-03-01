@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { connect } from "react-redux";
 import { firebase_user_list } from "../../reducer/reducer";
 
-const InfoDetail = (props: any) => {
-  const [users, setUsers] = useState();
-  useEffect(() => {
-    setUsers(props.dispatch(firebase_user_list()));
+const DetailWrapper = styled.div`
+  width: 45%;
+  height: 100%;
+  background: #ffffff;
+`;
 
-    console.log(users);
-  }, []);
+const InfoDetail = (props: any) => {
+  // const [users, setUsers] = useState();
+  // useEffect(() => {
+  //   setUsers(props.dispatch(firebase_user_list()));
+
+  //   console.log(users);
+  // }, []);
   return (
-    <>
+    <DetailWrapper>
       <h1>hello</h1>
-    </>
+    </DetailWrapper>
   );
 };
 
