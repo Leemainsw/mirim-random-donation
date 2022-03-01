@@ -8,6 +8,7 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   overflow: hidden;
+  font-size: 15px;
 `;
 const DonationInfo = (): JSX.Element => {
   return (
