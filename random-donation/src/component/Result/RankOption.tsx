@@ -12,6 +12,7 @@ const RankOptionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 const RankTitle = styled.h1`
   color: #a53232;
   font-size: 1.4em;
@@ -20,12 +21,15 @@ const RankTitle = styled.h1`
   color: ${(props: RankTitle) => (props.isFirst ? "#a53232" : "#121212")};
 `;
 
-const RankOption = () => {
+const RankOption = (props: any) => {
+  const {name, price, index} = props;
+  // console.log('name', name, 'price', price, 'index', index)
+
   return (
     <RankOptionWrapper>
-      <RankTitle width={"60px"}>1위</RankTitle>
-      <RankTitle width={"100px"}>양아름</RankTitle>
-      <RankTitle>30,000원</RankTitle>
+      <RankTitle width={"60px"} isFirst={index === 0}>{index + 1}위</RankTitle>
+      <RankTitle width={"100px"} isFirst={index === 0}>{name}</RankTitle>
+      <RankTitle isFirst={index === 0}>{price.toLocaleString('ko-KR')}원</RankTitle>
     </RankOptionWrapper>
   );
 };
