@@ -4,7 +4,7 @@ import InfoDetail from "../component/DonationInfo/InfoDetail";
 const DonationInfo = (): JSX.Element => {
   return (
     <>
-      <InfoDetail />
+      {/* <InfoDetail /> */}
     </>
   );
 };

@@ -25,6 +25,7 @@ const BottomBox = styled.div`
     @media ${device.tablet} {
         height: 25vh;
         margin-top: 0;
+        margin-bottom: 50px;
     }
 `;
 
@@ -57,6 +58,16 @@ const Form = styled.textarea`
 
     font-size: 1.2rem;
     font-family: Noto Sans KR;
+
+    @media ${device.desktop} {
+        height: 75%;
+    }
+
+    @media ${device.tablet} {
+        width: 75%;
+        height: 30%;
+    }
+
 `;
 
 const Button = styled.button`
