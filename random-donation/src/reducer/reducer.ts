@@ -6,10 +6,12 @@ import UserData from "./types";
 const USERS_LIST = "USERS_LIST";
 const USER_SELECT = "USER_SELECT";
 const USER_RANK_LIST = "USER_RANK_LIST"
+const SET_USER_NAME = "SET_USER_NAME"
 
 export const user_rank_list = createAction(USER_RANK_LIST);
 export const users_list = createAction(USERS_LIST);
 export const user_select = createAction(USER_SELECT);
+export const user_name = createAction(SET_USER_NAME);
 
 export const firebase_user_list = () => {
     return (dispatch: any) => {
@@ -50,9 +52,17 @@ export const firebase_user_rank_list = () => {
     };
 };
 
+export const setUserName = (name: string) => {
+    return {
+        type: SET_USER_NAME,
+        name
+    };
+}
+
 const initialState = {
     users: {},
     selectedUser: {},
+    name: '',
 };
 
 export default handleActions(
@@ -68,8 +78,11 @@ export default handleActions(
             };
         },
         [USER_RANK_LIST]: (state: any, data: any)=> {
-          return {users: data || data.filter((ele: UserData) => ele.isConfirm).slice(0, 5)}
-        }
+            return {users: data || data.filter((ele: UserData) => ele.isConfirm).slice(0, 5)}
+        },
+        [SET_USER_NAME]: (state: any = initialState, action: any)=>{
+            return {...state, name: action.name}
+        },
     },
     initialState
 );

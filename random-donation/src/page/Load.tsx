@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import ReactLoading from "react-loading";
+import firestore from "../services/fbase";
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
     width: 100%;
@@ -28,7 +31,7 @@ const TextBox = styled.div`
     justify-content: center;
     align-items: center;
     padding: 50px;
-`
+`;
 
 const TextBox2 = styled.div`
     font-size: 2.2rem;
@@ -38,18 +41,53 @@ const TextBox2 = styled.div`
     @media only screen and (max-width: 360px) {
         font-size: 1.8rem;
     }
-    
-`
+`;
 
-const Load = (): JSX.Element => {
-    const name: string = "양아름"
-    const detail: string = "개발자"
+const Load = (location: any): JSX.Element => {
+    // const params = new URLSearchParams(window.location.search);
+    // const name = params.get("name");
+
+    const name = useSelector((state: any) => state.name);
+    const detail: string = "개발자";
+
+    const [user, setUser] = useState();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const getUser = () => {
+            firestore
+                .collection("users")
+                .where("name", "==", name)
+                .get()
+                .then((snapshot: any) => {
+                    var rows: any = [];
+
+                    snapshot.forEach((doc: any) => {
+                        var childData = doc.data();
+                        rows.push(childData);
+                    });
+
+                    setUser(rows[0]);
+                });
+        };
+
+        // getUser();
+
+        setTimeout(()=>{
+            navigate('/result');
+        }, 3000);
+        
+    }, [name]);
+
 
     return (
         <Container>
             <TextBox>
-                {detail} {name}님이<br/>
-                <TextBox2>내실 금액 <b>계산중</b></TextBox2>
+                {detail} {name}님이
+                <br />
+                <TextBox2>
+                    내실 금액 <b>계산중</b>
+                </TextBox2>
             </TextBox>
 
             <ReactLoading type={"bubbles"} color="#fff" />
