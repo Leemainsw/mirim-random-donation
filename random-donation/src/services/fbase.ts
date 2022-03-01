@@ -1,7 +1,4 @@
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-import "firebase/storage";
+import firebase from "firebase";
 
 const firebaseConfig: object = {
   apiKey: process.env.API_KEY,
@@ -15,10 +12,9 @@ const firebaseConfig: object = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+var firestore = firebase.firestore();
 
-export const firebaseInstance: any = firebase;
-export const authService: any = firebaseInstance.auth();
-export const dbService: any = firebaseInstance.firestore();
-export const storageService: any = firebaseInstance.storage();
+// const settings = { timestampsInSnapshots: true };
+// firestore.settings(settings);
 
-export default firebaseInstance.firestore();
+export default firestore;
