@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UserData from "../../types/type";
 import UserDataService from "../../services/service";
 
-type Props = {};
-
-type State = {
-  users: Array<UserData>;
-};
-
 const InfoDetail = () => {
-  return <></>;
+  const [users, setUsers] = useState(Array<UserData>());
+  useEffect(() => {
+    UserDataService.getAll().onSnapshot((items: any) => {
+      let user = new Array<UserData>();
+      items.forEach((item: any) => {
+        let data = item.data();
+        user.push({
+          ...data,
+        });
+      });
+
+      console.log(user);
+      setUsers(user);
+    });
+  });
+  return (
+    <>
+      <h1>hello</h1>
+    </>
+  );
 };
 
 export default InfoDetail;
