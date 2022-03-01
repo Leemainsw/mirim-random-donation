@@ -5,6 +5,7 @@ import RankList from "../component/Result/RankList";
 import ResultText from "../component/Result/ResultText";
 
 import { device } from '../services/devices';
+import imageSrc from '../assets/thanks.png';
 
 
 const Container = styled.div`
@@ -74,17 +75,16 @@ const RightBox = styled.div`
     }
 `
 
-const Box = styled.div`
+const Box = styled.img`
     width: 100%;
     height: 22%;
-    background: #C4C4C4;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    
+    // background: #C4C4C4;
+    // box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    // border-radius: 5px;
 
-    @media ${device.mobileL} {
-        height: 15%;
-    }
+    // @media ${device.mobileL} {
+    //     height: 15%;
+    // }
 `
 
 const Result = (): JSX.Element => {
@@ -94,7 +94,7 @@ const Result = (): JSX.Element => {
                 <ResultText/>
                 <RightBox>
                     <RankList/>
-                    <Box></Box>
+                    <Box src={imageSrc}></Box>
                 </RightBox>
             </TopBox>
             <FeedBack/>

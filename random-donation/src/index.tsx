@@ -8,10 +8,8 @@ import thunk from "redux-thunk";
 import App from "./App";
 import user_reducer from "./reducer/reducer";
 
-let store = createStore(
+const store = createStore(
   user_reducer,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)
 );
 
