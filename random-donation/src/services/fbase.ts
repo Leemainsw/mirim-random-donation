@@ -1,24 +1,20 @@
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-import "firebase/storage";
+import firebase from "firebase";
 
 const firebaseConfig: object = {
   apiKey: process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID,
+  projectId:  process.env.PROJECT_ID,
   storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID,
-  measurementId: process.env.MEASUREMENT_ID,
+  messagingSenderId:  process.env.MESSAGING_SENDER_ID,
+  appId:  process.env.APP_ID,
+  measurementId:  process.env.MEASUREMENT_ID,
 };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+var firestore = firebase.firestore();
 
-export const firebaseInstance: any = firebase;
-export const authService: any = firebaseInstance.auth();
-export const dbService: any = firebaseInstance.firestore();
-export const storageService: any = firebaseInstance.storage();
+// const settings = { timestampsInSnapshots: true };
+// firestore.settings(settings);
 
-export default firebaseInstance.firestore();
+export default firestore;
