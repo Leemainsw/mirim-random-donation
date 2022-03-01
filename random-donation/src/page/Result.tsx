@@ -5,7 +5,7 @@ import RankList from "../component/Result/RankList";
 import ResultText from "../component/Result/ResultText";
 
 import { device } from "../services/devices";
-import imageSrc from "../assets/thanks.png";
+import thankYou from "../assets/thanks.png";
 
 const Container = styled.div`
   width: 100%;
@@ -30,6 +30,23 @@ const Bottom = styled.div`
   height: 90%;
   margin: 2% 0;
 `;
+const RightContent = styled.div`
+  width: 35%;
+`;
+const BannerContent = styled.div`
+  height: 35%;
+  display: flex;
+  flex-direction: column-reverse;
+`;
+const Banner = styled.div`
+  width: 100%;
+  height: 90%;
+  background-image: url("${thankYou}");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+`;
 
 const Result = (): JSX.Element => {
   return (
@@ -37,7 +54,12 @@ const Result = (): JSX.Element => {
       <ResultWrapper>
         <Top>
           <ResultText />
-          <RankList />
+          <RightContent>
+            <RankList />
+            <BannerContent>
+              <Banner />
+            </BannerContent>
+          </RightContent>
         </Top>
         <Bottom>
           <FeedBack />

@@ -5,57 +5,34 @@ import { device } from "../../services/devices";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import firestore from "../../services/fbase";
+import RankOption from "./RankOption";
 
-interface FontProp {
-  fontSize: string;
-  fontWeight: string;
-  fontColor: string;
-  marginTop?: string | null;
-  padding: string;
-  paddingLeft?: string;
-}
-
-const Container = styled.div`
-  position: relative;
-
-  width: 100%;
-  height: 75%;
-  background: #f6f6f6;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-
-  color: #ffffff;
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 17px;
-  line-height: 25px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
-  @media ${device.mobileL} {
-    height: 80%;
-  }
-`;
-
-const Text = styled.p`
-  font-size: ${(props: FontProp) => props.fontSize};
-  font-weight: ${(props: FontProp) => props.fontWeight};
-  padding: ${(props: FontProp) => props.padding};
-  margin-top: ${(props: FontProp) => props.marginTop};
-  color: ${(props: FontProp) => props.fontColor};
-  padding-left: ${(props: FontProp) => props.paddingLeft};
-
-  @media ${device.mobileL || device.tablet} {
-    font-size: calc(${(props: FontProp) => props.fontSize} / 2 + 5px);
-  }
-`;
 const RankListWrapper = styled.div`
-  width: 35%;
+  width: 100%;
+  height: 65%;
+  background: #f6f6f6;
+  border-radius: 5px;
+`;
+const Wrapper = styled.div`
+  padding: 30px 25px;
+  box-sizing: border-box;
+  width: 100%;
   height: 100%;
-  background: #493823;
+`;
+const TitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+const Title = styled.h1`
+  font-weight: 900;
+  font-size: 1.6em;
+  width: 100%;
+`;
+const Border = styled.div`
+  width: 90%;
+  height: 3px;
+  background: #121212;
 `;
 
 const RankList = (props: any): JSX.Element => {
@@ -96,7 +73,22 @@ const RankList = (props: any): JSX.Element => {
     { name: "양아름", price: 3000 },
   ];
 
-  return <RankListWrapper>sdaf</RankListWrapper>;
+  return (
+    <RankListWrapper>
+      <Wrapper>
+        <TitleWrapper>
+          <Title>도네이션 랭킹!</Title>
+          <Border />
+        </TitleWrapper>
+
+        <RankOption />
+        <RankOption />
+        <RankOption />
+        <RankOption />
+        <RankOption />
+      </Wrapper>
+    </RankListWrapper>
+  );
 };
 
 let mapStateToProps = (state: any) => {
