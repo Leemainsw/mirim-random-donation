@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import FeedBack from "../component/Result/FeedBack";
 import RankList from "../component/Result/RankList";
@@ -98,7 +98,13 @@ const Banner = styled.img`
 `;
 
 const Result = (): JSX.Element => {
-  const GoYoutube = () => {};
+  useEffect(() => {
+    console.log(
+      "%c 콘솔 에러 :" + "%c 지금 뭐하냐?!!?",
+      "font-size:20px;color:red;background:#ffffff;font-weight:900;",
+      "font-size:20px;color:green;background:#ffffff;font-weight:900;"
+    );
+  }, []);
 
   return (
     <Container>
