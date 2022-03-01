@@ -6,12 +6,20 @@ const FeedBackWrapper = styled.div`
   width: 100%;
   height: 48%;
   background: #f6f6f6;
+
+  @media ${device.tablet} {
+    height: 300px;
+  }
 `;
 const Wrapper = styled.div`
   padding: 40px 50px;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+
+  @media ${device.tablet} {
+    padding: 20px 30px;
+  }
 `;
 const Title = styled.h1`
   font-weight: 800;
@@ -33,6 +41,10 @@ const TextInput = styled.textarea`
   background-color: transparent;
   font-size: 1.3em;
   resize: none;
+
+  @media ${device.tablet} {
+    height: 60%;
+  }
 `;
 const ButtonWrapper = styled.div`
   width: 100%;
