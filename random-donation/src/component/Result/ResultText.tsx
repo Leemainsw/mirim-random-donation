@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { device } from '../../services/devices';
+import imageSrc from '../../assets/image.png';
 
 interface FontProp {
     fontSize: string;
@@ -44,6 +45,10 @@ const ICON = styled.div`
     position: absolute;
     bottom: -20px;
     right: 20px;
+
+    @media ${device.tablet} {
+        display: none;
+    }
 `;
 
 const Text = styled.p`
@@ -102,6 +107,15 @@ const Icon = (): JSX.Element => {
 };
 
 const ResultText = (): JSX.Element => {
+    const copyBankAccount = () =>{
+        var content:string = "국민은행 42400201291764 이의진"
+
+        navigator.clipboard.writeText(content)
+        .then(() => {
+            alert('복사 되었습니다!')
+        })
+    };
+
     return (
         <Container>
             <Box padding={"30px"}>
@@ -143,7 +157,7 @@ const ResultText = (): JSX.Element => {
                     fontColor={"#ffffff"}
                 >
                     국민은행 42400201291764 이의진{" "}
-                    <Icon2 src={"../../assets/image.png"} />
+                    <Icon2 src={imageSrc} onClick={copyBankAccount}/>
                 </Text>
             </Box>
             <Icon />

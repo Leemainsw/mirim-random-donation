@@ -28,16 +28,16 @@ const Container = styled.div`
     }
 
     @media ${device.mobileL} {
-        background-color: blue;
+        background-color: red;
         height: 100vh;
     }
 
     @media ${device.mobileM} {
-        background-color: purple;
+        background-color: yellow;
     }
 
     @media ${device.mobileS} {
-        background-color: gray;
+        background-color: green;
     }
 `;
 
