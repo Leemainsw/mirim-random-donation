@@ -77,6 +77,7 @@ const GoButton = styled.button`
   border-radius: 3px;
   font-weight: bold;
   text-align: center;
+  cursor: pointer;
 
   @media ${device.tablet} {
     font-size: 0.9em;
