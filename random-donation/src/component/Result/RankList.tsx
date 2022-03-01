@@ -81,11 +81,8 @@ const RankList = (props: any): JSX.Element => {
           <Border />
         </TitleWrapper>
 
-        <RankOption />
-        <RankOption />
-        <RankOption />
-        <RankOption />
-        <RankOption />
+        {array && array.map((data: any, index: number)=><RankOption name={data.name} price={data.price} index={index}/>)}
+
       </Wrapper>
     </RankListWrapper>
   );
