@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import TeacherGift from "../../assets/Teacher_Gift.jpg";
 
 import { device, min_device } from "../../services/devices";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUserName } from "../../reducer/reducer";
 
@@ -24,6 +24,11 @@ const DetailWrapper = styled.div`
   @media ${min_device.tablet} {
     height: 90%;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
   @media ${device.tablet} {
     overflow-y: hidden;
@@ -88,14 +93,14 @@ const GoButton = styled.button`
 `;
 
 const InfoDetail = (props: any) => {
-  const [name, setName]= useState('');
+  const [name, setName] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const goLoading = () => {
     dispatch(setUserName(name));
-    navigate('/load')
-  }
+    navigate("/load");
+  };
   // const [users, setUsers] = useState();
   // useEffect(() => {
   //   setUsers(props.dispatch(firebase_user_list()));
@@ -157,8 +162,11 @@ const InfoDetail = (props: any) => {
 
         <TitleWord>수고비 보러가기</TitleWord>
         <DetailWordWrapper>
-          <InputName type="text" placeholder="이름 세글자 써주라 이상한 거 쓰지마라 진짜" 
-          onChange={(e)=>setName(e.target.value)}/>
+          <InputName
+            type="text"
+            placeholder="이름 세글자 써주라 이상한 거 쓰지마라 진짜"
+            onChange={(e) => setName(e.target.value)}
+          />
           <br />
           <GoButton onClick={goLoading}>달력의 요정아! 도와줘!</GoButton>
         </DetailWordWrapper>
