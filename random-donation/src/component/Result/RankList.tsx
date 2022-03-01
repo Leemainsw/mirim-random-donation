@@ -26,7 +26,7 @@ const TitleWrapper = styled.div`
 `;
 const Title = styled.h1`
   font-weight: 900;
-  font-size: 1.6em;
+  font-size: 1.5em;
   width: 100%;
 `;
 const Border = styled.div`
@@ -81,8 +81,10 @@ const RankList = (props: any): JSX.Element => {
           <Border />
         </TitleWrapper>
 
-        {array && array.map((data: any, index: number)=><RankOption name={data.name} price={data.price} index={index}/>)}
-
+        {array &&
+          array.map((data: any, index: number) => (
+            <RankOption name={data.name} price={data.price} index={index} />
+          ))}
       </Wrapper>
     </RankListWrapper>
   );

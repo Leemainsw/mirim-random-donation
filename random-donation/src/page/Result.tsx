@@ -14,7 +14,7 @@ const Container = styled.div`
   font-size: 15px;
 `;
 const ResultWrapper = styled.div`
-  width: 1000px;
+  width: 940px;
   height: 100%;
   margin: 0 auto;
   padding: 20px;
