@@ -4,102 +4,47 @@ import FeedBack from "../component/Result/FeedBack";
 import RankList from "../component/Result/RankList";
 import ResultText from "../component/Result/ResultText";
 
-import { device } from '../services/devices';
-import imageSrc from '../assets/thanks.png';
-
+import { device } from "../services/devices";
+import imageSrc from "../assets/thanks.png";
 
 const Container = styled.div`
-    width: 100%;
-    height: 100vh;
-    background-color: #ffffff;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    overflow: hidden;
-
-    @media ${device.tablet} {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        height: 100vh;
-    }
-
-    @media ${device.mobileL} {
-        background-color: red;
-        height: 100vh;
-    }
-
-    @media ${device.mobileM} {
-        background-color: yellow;
-    }
-
-    @media ${device.mobileS} {
-        background-color: green;
-    }
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 15px;
+`;
+const ResultWrapper = styled.div`
+  width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+`;
+const Top = styled.div`
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+`;
+const Bottom = styled.div`
+  width: 100%;
+  height: 90%;
+  margin: 2% 0;
 `;
 
-const TopBox = styled.div`
-    width: 65%;
-    height: 50vh;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    @media ${device.tablet} {
-        width: 80%;
-        height: 100%;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-`
-
-const RightBox = styled.div`
-    width: 38%;
-    height: 100%;   
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
-
-    @media ${device.tablet} {
-        width: 80%;
-        height: 45%;
-    }
-`
-
-const Box = styled.img`
-    width: 100%;
-    height: 22%;
-    // background: #C4C4C4;
-    // box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    // border-radius: 5px;
-
-    // @media ${device.mobileL} {
-    //     height: 15%;
-    // }
-`
-
 const Result = (): JSX.Element => {
-    return (
-        <Container>
-            <TopBox>
-                <ResultText/>
-                <RightBox>
-                    <RankList/>
-                    <Box src={imageSrc}></Box>
-                </RightBox>
-            </TopBox>
-            <FeedBack/>
-        </Container>
-    );
+  return (
+    <Container>
+      <ResultWrapper>
+        <Top>
+          <ResultText />
+          <RankList />
+        </Top>
+        <Bottom>
+          <FeedBack />
+        </Bottom>
+      </ResultWrapper>
+    </Container>
+  );
 };
 
 export default Result;
