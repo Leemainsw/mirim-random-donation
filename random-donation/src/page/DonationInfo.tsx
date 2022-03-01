@@ -17,6 +17,11 @@ const Container = styled.div`
     display: block;
     overflow: auto;
   }
+  @media ${device.mobileM} {
+    font-size: 14px;
+    display: block;
+    overflow: auto;
+  }
 `;
 const DonationInfo = (): JSX.Element => {
   return (

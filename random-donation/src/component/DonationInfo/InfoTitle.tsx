@@ -67,6 +67,12 @@ const DetailWord = styled.p`
   @media ${device.tablet} {
     font-size: 1.6em;
   }
+  @media ${device.mobileL} {
+    font-size: 1.4em;
+  }
+  @media ${device.mobileM} {
+    font-size: 1.3em;
+  }
 `;
 const BoldWord = styled.b`
   font-weight: bold;
