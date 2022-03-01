@@ -4,17 +4,28 @@ import { connect } from "react-redux";
 import TeacherGift from "../../assets/Teacher_Gift.jpg";
 import { firebase_user_list } from "../../reducer/reducer";
 
+import { device, min_device } from "../../services/devices";
+
 const InfoDetailWrapper = styled.div`
   width: 45%;
   height: 100%;
   background: #ffffff;
+
+  @media ${device.tablet} {
+    width: 100%;
+  }
 `;
 const DetailWrapper = styled.div`
-  width: 80%;
-  height: 90%;
+  width: 85%;
   margin: 50px auto;
-  // background: #d3d3d3;
-  overflow-y: auto;
+
+  @media ${min_device.tablet} {
+    height: 90%;
+    overflow-y: auto;
+  }
+  @media ${device.tablet} {
+    overflow-y: hidden;
+  }
 `;
 const Border = styled.div`
   width: 100%;
@@ -50,6 +61,11 @@ const InputName = styled.input`
   height: 35px;
   width: 300px;
   margin: 10px 0px;
+
+  @media ${device.tablet} {
+    font-size: 0.9em;
+    width: 100%;
+  }
 `;
 const GoButton = styled.button`
   border: 0px;
@@ -61,6 +77,11 @@ const GoButton = styled.button`
   border-radius: 3px;
   font-weight: bold;
   text-align: center;
+
+  @media ${device.tablet} {
+    font-size: 0.9em;
+    width: 100%;
+  }
 `;
 
 const InfoDetail = (props: any) => {
@@ -130,6 +151,7 @@ const InfoDetail = (props: any) => {
           <GoButton>달력의 요정아! 도와줘!</GoButton>
         </DetailWordWrapper>
       </DetailWrapper>
+      <Border />
     </InfoDetailWrapper>
   );
 };
