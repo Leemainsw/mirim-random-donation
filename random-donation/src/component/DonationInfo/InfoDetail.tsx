@@ -123,19 +123,19 @@ const InfoDetail = (props: any) => {
                 snapshot.forEach((doc: any) => {
                     var childData = doc.data();
 
-                    // if (childData.isConfirm) {
-                    //     toast.error("이미 도네이션을 해주신 유저입니다 😊", {
-                    //         position: "top-center",
-                    //         autoClose: 2000,
-                    //         hideProgressBar: false,
-                    //         closeOnClick: true,
-                    //         pauseOnHover: true,
-                    //         draggable: true,
-                    //         progress: undefined,
-                    //     });
+                    if (childData.isAdmin) {
+                        toast.error("에잉 관리자는 못해영 ~ 😊", {
+                            position: "top-center",
+                            autoClose: 2000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
 
-                    //     return false;
-                    // }
+                        return false;
+                    }
 
                     dispatch(setUserData({ ...childData, id: doc.id }));
                     navigate("/load");
