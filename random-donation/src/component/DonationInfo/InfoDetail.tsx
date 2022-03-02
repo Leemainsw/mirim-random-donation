@@ -190,7 +190,6 @@ const InfoDetail = (props: any) => {
                     <DetailWord>
                         - 다른 사람 사칭한 거 들키면 벌칙 있습니다.
                     </DetailWord>
-                    <DetailWord>- 수고비 더 주고싶으면 더 줘도 됨.</DetailWord>
                 </DetailWordWrapper>
 
                 <Border />
@@ -207,7 +206,7 @@ const InfoDetail = (props: any) => {
                     </DetailWord>
                     <DetailWord>
                         A. 밑에 체크박스에{" "}
-                        <BoldWord>이름을 적으면 달력의 요정</BoldWord>이 도네
+                        이름을 적으면 <BoldWord>달력의 요정</BoldWord>이 도네
                         금액을 정해줄 것임요.
                     </DetailWord>
                 </DetailWordWrapper>

@@ -31,7 +31,7 @@ const Title = styled.h1`
 `;
 const Detail = styled.p`
     font-size: 1em;
-    margin: 5px 0px;
+    margin: 8px 0px;
     color: #5f5f5f;
 `;
 const TextInput = styled.textarea`
@@ -58,7 +58,7 @@ const Button = styled.button`
     height: 35px;
     font-family: Noto Sans KR;
     background: #121212;
-    border-radious: 5px;
+    border-radius: 5px;
     color: white;
     cursor: pointer;
     border: 0;

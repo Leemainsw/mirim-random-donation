@@ -60,17 +60,22 @@ const DetailWord = styled.p`
   font-weight: 100;
   font-size: 1.1em;
   margin: 1px 0px;
+  line-height : 22px;
 
   @media ${device.laptop} {
     font-size: 0.9em;
+    line-height : 20px;
   }
   @media ${device.tablet} {
     font-size: 1.6em;
+    line-height : 20px;
   }
   @media ${device.mobileL} {
+    line-height : 18px;
     font-size: 1.4em;
   }
   @media ${device.mobileM} {
+    line-height : 18px;
     font-size: 1.3em;
   }
 `;
@@ -88,7 +93,7 @@ const InfoTitle = () => {
         <BoldYellowTitle>도네이션!</BoldYellowTitle>
         <BorderBottom />
         <DetailWord>
-          성황리에 끝난 2022달력! 이제 마지막 할 일 정산시간이
+          성황리에 끝난 2022달력! 하지만 마지막 할 일 정산시간이
           <br />
           당신을 기다리고 있다! 근데 이제 <BoldWord>랜덤 도네이션</BoldWord>을
           곁들인...
