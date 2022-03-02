@@ -28,11 +28,22 @@ const Title = styled.h1`
   font-weight: 900;
   font-size: 1.5em;
   width: 100%;
+
+  @media ${device.tablet} {
+    width: 60%;
+  }
+  @media ${device.mobileL} {
+    width: 100%;
+  }
 `;
 const Border = styled.div`
   width: 90%;
   height: 3px;
   background: #121212;
+
+  @media ${device.tablet} {
+    width: 100%;
+  }
 `;
 const NonData = styled.h1`
   font-weight: 900;
