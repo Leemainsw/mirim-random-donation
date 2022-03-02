@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface RankTitle {
+interface RankTitleProp {
   width?: string;
   isFirst?: boolean;
 }
@@ -17,8 +17,8 @@ const RankTitle = styled.h1`
   color: #a53232;
   font-size: 1.4em;
   font-weight: bold;
-  width: ${(props: RankTitle) => props.width};
-  color: ${(props: RankTitle) => (props.isFirst ? "#a53232" : "#121212")};
+  width: ${(props: RankTitleProp) => props.width};
+  color: ${(props: RankTitleProp) => (props.isFirst ? "#a53232" : "#121212")};
 `;
 
 const RankOption = (props: any) => {

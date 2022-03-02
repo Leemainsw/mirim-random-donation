@@ -1,8 +1,13 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { device } from "../../services/devices";
 import imageSrc from "../../assets/image.png";
 import { useSelector } from "react-redux";
+import firestore from "../../services/fbase";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface FontProp {
     fontSize?: string;
@@ -10,6 +15,12 @@ interface FontProp {
     fontColor?: string;
     margin?: string;
 }
+interface price {
+    price: number;
+    userId: string;
+    id?: string;
+}
+
 
 const ResultTextWrapper = styled.div`
     width: 63%;
@@ -56,40 +67,113 @@ const CopyImg = styled.img`
 `;
 
 const ResultText = (): JSX.Element => {
-    const name = useSelector((state: any) => state.name);
-    const detail = "개발자";
+    const [priceArray, setPriceArray] = useState<any[]>([])
+    const [price, setPrice] = useState({ price: 0, userId: "" });
+    const userData = useSelector((state: any) => state.userData);
 
-    const money: number = 30000;
-    const count: number = 1;
+    const name = userData.name;
+    const detail = userData.detail;
+    const count = userData.count;
+
+    useEffect(() => {
+        const getData = async (): Promise<void | boolean> => {
+            const snapshot = await firestore.collection("master").get();
+            let priceArray: any = snapshot.docs.map((doc: any) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+
+            setPriceArray(priceArray ? priceArray : []);
+        };
+
+        getData();
+    }, []);
+
+    useEffect(() => {
+        const updateData = (price: number, priceId: string) => {
+            const userId = userData.id;
+
+            firestore.collection('master').doc(priceId).update({
+                userId: userId
+            })
+
+            firestore.collection('users').doc(userId).update({
+                isConfirm: true,
+                result: price
+            })
+        };
+
+        const setData = (): void | boolean => {
+            if (priceArray.length === 0) return false;
+            if(price && price.price) return false;
+            
+            let data =
+                priceArray
+                    .filter(
+                        (ele: price) => !ele.userId || ele.userId.length === 0
+                    )
+                    .sort(() => Math.random() - 0.5)[0];
+
+            setPrice(data);
+            updateData(data.price, data.id);
+        };
+
+        setData();
+    }, [priceArray, price]);
+
     const copyBankAccount = () => {
         var content: string = "국민은행 42400201291764 이의진";
 
-        navigator.clipboard.writeText(content).then(() => {
-            alert("복사되었습니다! 수고비 감사합니다~");
-        });
+        if (navigator.clipboard) {
+            // (IE는 사용 못하고, 크롬은 66버전 이상일때 사용 가능합니다.)
+            navigator.clipboard.writeText(content).then(() => {
+                toast.success("🦄 복사완료 수고비 감사합니다~", {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
+        } else {
+            // 흐름 2.
+            if (!document.queryCommandSupported("copy")) {
+                toast.warning("🦄 복사하기가 지원되지 않는 브라우저입니다.", {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+        }
     };
 
-    const array = [
-        { price: 30000, userId: "" },
-        { price: 7000, userId: "" },
-        { price: 7000, userId: "" },
-        { price: 7000, userId: "" },
-        { price: 7000, userId: "" },
-        { price: 6000, userId: "" },
-        { price: 6000, userId: "" },
-        { price: 6000, userId: "" },
-        { price: 6000, userId: "" },
-        { price: 5000, userId: "" },
-        { price: 5000, userId: "" },
-        { price: 5000, userId: "" },
-        { price: 5000, userId: "" },
-        { price: 1000, userId: "" },
-    ];
+    // const array = [
+    //     { price: 30000, userId: "" },
+    //     { price: 7000, userId: "" },
+    //     { price: 7000, userId: "" },
+    //     { price: 7000, userId: "" },
+    //     { price: 7000, userId: "" },
+    //     { price: 6000, userId: "" },
+    //     { price: 6000, userId: "" },
+    //     { price: 6000, userId: "" },
+    //     { price: 6000, userId: "" },
+    //     { price: 5000, userId: "" },
+    //     { price: 5000, userId: "" },
+    //     { price: 5000, userId: "" },
+    //     { price: 5000, userId: "" },
+    //     { price: 1000, userId: "" },
+    // ];
 
-    // 아직 매칭되지 않은 가격 array를 랜덤으로 섞어 그 첫 번째 값
-    const price = array
-        .filter((ele) => !ele.userId || ele.userId.length === 0)
-        .sort(() => Math.random() - 0.5)[0];
+    // // 아직 매칭되지 않은 가격 array를 랜덤으로 섞어 그 첫 번째 값
+    // const price = array
+    //     .filter((ele) => !ele.userId || ele.userId.length === 0)
+    //     .sort(() => Math.random() - 0.5)[0];
 
     return (
         <ResultTextWrapper>
@@ -99,12 +183,14 @@ const ResultText = (): JSX.Element => {
                     <WhiteText fontSize={"1.6em"} fontWeight={"600"}>
                         {name}의 수고비
                     </WhiteText>
-                    <MoneyText>{price.price.toLocaleString('ko-KR')}원</MoneyText>
+                    <MoneyText>
+                        {price.price.toLocaleString("ko-KR")}원
+                    </MoneyText>
                     <WhiteText fontWeight={"100"}>
                         달력 발주 비용 : 8,900원 X 수량 ({count})
                     </WhiteText>
                     <WhiteText fontWeight={"100"}>
-                        랜덤 수고비 : {price.price.toLocaleString('ko-KR')}원
+                        랜덤 수고비 : {price.price.toLocaleString("ko-KR")}원
                     </WhiteText>
 
                     <WhiteText
@@ -113,21 +199,41 @@ const ResultText = (): JSX.Element => {
                         margin={"5px 0px"}
                     >
                         총 입금 금액:{" "}
-                        <BoldText>{(price.price + 8900 * count).toLocaleString('ko-KR')}원</BoldText>
+                        <BoldText>
+                            {(price.price + 8900 * count).toLocaleString(
+                                "ko-KR"
+                            )}
+                            원
+                        </BoldText>
                     </WhiteText>
                 </TopWrapper>
                 <BottomWrapper>
                     <WhiteText fontWeight={"100"}>
                         카카오뱅크도 가능합니다.
                     </WhiteText>
-                    <CopyBox >
+                    <CopyBox>
                         <WhiteText fontWeight={"100"}>
                             국민은행 42400201291764 이의진
                         </WhiteText>
-                        <CopyImg src={imageSrc} onClick={copyBankAccount}/>
+                        <CopyImg
+                            src={imageSrc}
+                            onClick={copyBankAccount}
+                            id="copyBtn"
+                        />
                     </CopyBox>
                 </BottomWrapper>
             </Wrapper>
+            <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </ResultTextWrapper>
     );
 };
