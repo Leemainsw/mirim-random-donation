@@ -6,15 +6,23 @@ import { ToastContainer, toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
 const FeedBackWrapper = styled.div`
-    width: 100%;
-    height: 48%;
-    background: #f6f6f6;
+  width: 100%;
+  height: 48%;
+  background: #f6f6f6;
+
+  @media ${device.tablet} {
+    height: 300px;
+  }
 `;
 const Wrapper = styled.div`
-    padding: 40px 50px;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
+  padding: 40px 50px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  @media ${device.tablet} {
+    padding: 20px 30px;
+  }
 `;
 const Title = styled.h1`
     font-weight: 800;
@@ -27,15 +35,19 @@ const Detail = styled.p`
     color: #5f5f5f;
 `;
 const TextInput = styled.textarea`
-    margin: 5px 0px;
-    font-family: Noto Sans KR;
-    width: 100%;
-    height: 75%;
-    border: 0;
-    outline: 0;
-    background-color: transparent;
-    font-size: 1.3em;
-    resize: none;
+  margin: 5px 0px;
+  font-family: Noto Sans KR;
+  width: 100%;
+  height: 75%;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  font-size: 1.3em;
+  resize: none;
+
+  @media ${device.tablet} {
+    height: 60%;
+  }
 `;
 const ButtonWrapper = styled.div`
     width: 100%;
