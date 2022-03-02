@@ -47,43 +47,26 @@ const Load = (location: any): JSX.Element => {
     // const params = new URLSearchParams(window.location.search);
     // const name = params.get("name");
 
-    const name = useSelector((state: any) => state.name);
+    const userData = useSelector((state: any) => state.userData) || {name: 'aaa', detail: 'bbb'};
     const detail: string = "개발자";
+
+    console.log('userData', userData)
 
     const [user, setUser] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
-        const getUser = () => {
-            firestore
-                .collection("users")
-                .where("name", "==", name)
-                .get()
-                .then((snapshot: any) => {
-                    var rows: any = [];
-
-                    snapshot.forEach((doc: any) => {
-                        var childData = doc.data();
-                        rows.push(childData);
-                    });
-
-                    setUser(rows[0]);
-                });
-        };
-
-        // getUser();
-
         setTimeout(()=>{
             navigate('/result');
         }, 3000);
         
-    }, [name]);
+    }, []);
 
 
     return (
         <Container>
             <TextBox>
-                {detail} {name}님이
+                {userData.detail} {userData.name}님이
                 <br />
                 <TextBox2>
                     내실 금액 <b>계산중</b>
