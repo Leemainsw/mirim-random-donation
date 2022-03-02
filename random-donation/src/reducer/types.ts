@@ -5,4 +5,5 @@ export default interface UserData {
     count: number;
     result: number;
     isAdmin?: boolean;
+    id: string;
 }
