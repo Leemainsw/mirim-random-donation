@@ -34,6 +34,11 @@ const Border = styled.div`
   height: 3px;
   background: #121212;
 `;
+const NonData = styled.h1`
+  font-weight: 900;
+  font-size: 1.5em;
+  width: 100%;
+`;
 
 const RankList = (props: any): JSX.Element => {
   const [userList, setUserList] = useState([]);
@@ -62,7 +67,7 @@ const RankList = (props: any): JSX.Element => {
         });
     };
 
-    // getData();
+    getData();
   }, []);
 
   const array = [
@@ -81,10 +86,10 @@ const RankList = (props: any): JSX.Element => {
           <Border />
         </TitleWrapper>
 
-        {array &&
-          array.map((data: any, index: number) => (
-            <RankOption name={data.name} price={data.price} index={index} />
-          ))}
+        {userList && userList.length > 0 ?
+          userList.map((data: any, index: number) => (
+            <RankOption key={index} name={data.name} price={data.result ? data.result : 0} index={index} />
+          )) : <NonData />}
       </Wrapper>
     </RankListWrapper>
   );
