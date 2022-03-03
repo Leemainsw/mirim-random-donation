@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ReactLoading from "react-loading";
 import firestore from "../services/fbase";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
@@ -47,34 +47,43 @@ const Load = (location: any): JSX.Element => {
     // const params = new URLSearchParams(window.location.search);
     // const name = params.get("name");
 
-    const userData = useSelector((state: any) => state.userData) || {name: 'aaa', detail: 'bbb'};
-    const detail: string = "개발자";
-
-    console.log('userData', userData)
+    const userData = useSelector((state: any) => state.userData) || {
+        name: "aaa",
+        detail: "bbb",
+    };
 
     const [user, setUser] = useState();
+    const [load, setLoad] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
-        setTimeout(()=>{
-            navigate('/result');
+        setLoad(true);
+
+        if (!userData || Object.keys(userData).length === 0)
+            return navigate("/");
+        setLoad(false);
+
+        setTimeout(() => {
+            navigate("/result");
         }, 3000);
-        
     }, []);
 
-
     return (
-        <Container>
-            <TextBox>
-                {userData.detail} {userData.name}님이
-                <br />
-                <TextBox2>
-                    내실 금액 <b>계산중</b>
-                </TextBox2>
-            </TextBox>
+        <>
+            {!load && (
+                <Container>
+                    <TextBox>
+                        {userData.detail} {userData.name}님이
+                        <br />
+                        <TextBox2>
+                            내실 금액 <b>계산중</b>
+                        </TextBox2>
+                    </TextBox>
 
-            <ReactLoading type={"bubbles"} color="#fff" />
-        </Container>
+                    <ReactLoading type={"bubbles"} color="#fff" />
+                </Container>
+            )}
+        </>
     );
 };
 
