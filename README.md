@@ -34,7 +34,7 @@
   <td align="center">
       <a href="https://bit.ly/3LZ2CdR"><img height="100px" width="100px" src="https://avatars.githubusercontent.com/u/49094082?v=4"/></a>
       <br />
-      <a href="https://bit.ly/3LZ2CdR">의진 🎨</a>
+      <a href="httpshttps://github.com/2uijin">의진 🎨</a>
     </td>
     <td align="center">
       <a href="https://github.com/areumsheep"><img height="100px" width="100px" src="https://avatars.githubusercontent.com/u/48716298?v=4"/></a>
@@ -44,7 +44,7 @@
     <td align="center">
       <a href="https://github.com/parksil0"><img height="100px" width="100px" src="https://avatars.githubusercontent.com/u/48716775?v=4"/></a>
       <br />
-      <a href="https://github.com/parksil0">예슬 💻</a>
+      <a href="https://github.com/Leemainsw">예슬 💻</a>
     </td>
   </tr>
 </table>
