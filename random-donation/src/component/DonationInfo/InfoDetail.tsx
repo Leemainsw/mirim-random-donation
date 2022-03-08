@@ -144,7 +144,25 @@ const InfoDetail = (props: any) => {
     };
 
     const goLoading = () => {
-        getUserData(name);
+        if(!name)
+        {
+            toast.error("이름.. 써주세요.....🥲", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+
+            return false;
+        }
+        
+        else
+        {
+            getUserData(name);
+        }
     };
 
     return (
