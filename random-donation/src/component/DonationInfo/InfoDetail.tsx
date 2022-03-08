@@ -144,7 +144,8 @@ const InfoDetail = (props: any) => {
     };
 
     const goLoading = () => {
-        if(!name)
+        console.log('name', name);
+        if(!name || name.length === 0)
         {
             toast.error("이름.. 써주세요.....🥲", {
                 position: "top-center",
@@ -158,7 +159,6 @@ const InfoDetail = (props: any) => {
 
             return false;
         }
-        
         else
         {
             getUserData(name);
