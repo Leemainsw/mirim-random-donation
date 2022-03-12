@@ -143,8 +143,7 @@ const InfoDetail = (props: any) => {
             });
     };
 
-    const goLoading = () => {
-        console.log('name', name);
+    const  goLoading = () => {
         if(!name || name.length === 0)
         {
             toast.error("이름.. 써주세요.....🥲", {
@@ -218,7 +217,7 @@ const InfoDetail = (props: any) => {
                     <DetailWord>
                         A. 예. 박성래 선생님이 잘 받았다고 하셨습니다.
                     </DetailWord>
-                    <Image src={TeacherGift} />
+                    <Image src={TeacherGift} alt="선생님 사진" />
                     <DetailWord>
                         Q. 도네이션 금액은 어떻게 정하는 건가요?
                     </DetailWord>
