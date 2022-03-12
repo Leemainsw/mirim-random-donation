@@ -73,7 +73,7 @@ const Load = (location: any): JSX.Element => {
             {!load && (
                 <Container>
                     <TextBox>
-                        {userData.detail} {userData.name}님이
+                        {userData.name}님이
                         <br />
                         <TextBox2>
                             내실 금액 <b>계산중</b>

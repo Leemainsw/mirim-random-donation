@@ -68,6 +68,7 @@ const InputName = styled.input`
     outline: 0px;
     background: #f9f9f9;
     padding-left: 10px;
+    box-sizing: border-box;
     height: 35px;
     width: 300px;
     margin: 10px 0px;
