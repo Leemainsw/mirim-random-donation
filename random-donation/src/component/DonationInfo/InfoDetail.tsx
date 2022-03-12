@@ -68,6 +68,7 @@ const InputName = styled.input`
   outline: 0px;
   background: #f9f9f9;
   padding-left: 10px;
+  box-sizing: border-box;
   height: 35px;
   width: 300px;
   margin: 10px 0px;
@@ -203,7 +204,7 @@ const InfoDetail = (props: any) => {
           <DetailWord>
             A. 예. 박성래 선생님이 잘 받았다고 하셨습니다.
           </DetailWord>
-          <Image src={TeacherGift} />
+          <Image src={TeacherGift} alt="선생님 사진" />
           <DetailWord>Q. 도네이션 금액은 어떻게 정하는 건가요?</DetailWord>
           <DetailWord>
             A. 밑에 체크박스에 이름을 적으면 <BoldWord>달력의 요정</BoldWord>이

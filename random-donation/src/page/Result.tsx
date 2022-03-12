@@ -130,7 +130,7 @@ const Result = (): JSX.Element => {
                                 <RankList />
                                 <BannerContent>
                                     <a href="https://www.youtube.com/watch?v=VdVq1r7OdGM">
-                                        <Banner src={thankYou} />
+                                        <Banner src={thankYou} alt="배너 이미지" />
                                     </a>
                                 </BannerContent>
                             </RightContent>
