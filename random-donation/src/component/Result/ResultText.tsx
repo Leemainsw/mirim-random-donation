@@ -76,7 +76,12 @@ const CopyBox = styled.div`
   display: flex;
 `;
 const CopyImg = styled.img`
-  margin: 3px;
+  margin: 2px;
+  width: 20px;
+  height: 18px;
+  @media ${device.tablet} {
+    height: 17px;
+  }
 `;
 
 const ResultText = (): JSX.Element => {
