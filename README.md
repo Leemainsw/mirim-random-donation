@@ -1,10 +1,7 @@
 # 🎉 미림 랜덤 도네이션
 
 <div>
-  
-<img src="https://user-images.githubusercontent.com/48716775/157135559-292ada7e-fe1b-499e-a35a-4d384e6c8f38.png" width="600" 
-     style="border: 1px solid red"/>
-
+<img src="https://user-images.githubusercontent.com/48716298/159257067-731e704f-7dce-4230-a886-c66518653a95.gif" />
 </div>
 
 <br/>
@@ -49,3 +46,6 @@
 </table>
 
 <br>
+
+## 📱모바일 화면
+<img src="https://user-images.githubusercontent.com/48716298/159257272-7effd6ca-c4ab-4b4f-8289-dc8c266e9743.gif" />
